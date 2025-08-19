@@ -1,0 +1,290 @@
+/* Custom class for small thumbnail images */
+.small-thumbnail {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+}
+
+/* Optional: Style for clickable links */
+.clickable {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.clickable:hover {
+    text-decoration: underline;
+}
+
+/* Custom tooltip styles */
+.tooltip {
+    font-size: 0.875rem;
+    max-width: 400px;
+    width: 400px;
+}
+
+.tooltip-inner {
+    background-color: #2c3e50;
+    padding: 10px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    max-width: 300px;
+    width: 100%;
+    white-space: pre-line;
+}
+
+/* Add clear pins button styles */
+.btn-icon {
+    padding: 0.25rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.btn-icon:hover {
+    opacity: 1;
+    color: var(--link-color);
+}
+
+/* Light theme specific */
+:root[data-theme='light'] .controls-container button {
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme='light'] .controls-container button:not(:disabled):hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme specific */
+:root[data-theme='dark'] .controls-container button {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme='dark'] .controls-container button:not(:disabled):hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Define CSS variables for light theme */
+:root[data-theme='light'] {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --card-background: #ffffff;
+    --card-text: #000000;
+    --header-background: #f8f9fa;
+    --header-text: #000000;
+    --link-color: #0d6efd;
+    --text-color-rgb: 0, 0, 0;
+    --border-color: #dee2e6;
+    --link-color-rgb: 13, 110, 253;
+}
+
+/* Define CSS variables for dark theme */
+:root[data-theme='dark'] {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --card-background: #1e1e1e;
+    --card-text: #ffffff;
+    --header-background: #1f1f1f;
+    --header-text: #ffffff;
+    --link-color: #0d6efd;
+    --text-color-rgb: 255, 255, 255;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --link-color-rgb: 13, 110, 253;
+}
+
+/* Apply variables to body and other elements */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Update button styles */
+.btn-outline-secondary {
+    border-color: var(--link-color);
+    color: var(--link-color);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--link-color);
+    color: var(--background-color);
+}
+
+/* Update tooltip styles */
+.tooltip {
+    background-color: var(--card-background);
+    color: var(--card-text);
+}
+
+.tooltip-inner {
+    background-color: var(--card-background);
+    color: var(--card-text);
+}
+
+/* Update modal styles */
+.modal-content {
+    background-color: var(--card-background);
+    color: var(--card-text);
+}
+
+/* Example for links */
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: darken(var(--link-color), 10%);
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark theme scrollbar */
+:root[data-theme='dark'] ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+:root[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Controls container position */
+.controls-container {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    z-index: 1001;
+    display: flex;
+    gap: 8px;
+}
+
+/* Controls container button styles - match pin button style */
+.controls-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s, transform 0.2s;
+    opacity: 0.7;
+}
+
+.controls-container button:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    background-color: rgba(var(--text-color-rgb), 0.1);
+}
+
+.controls-container button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Theme toggle specific positioning */
+.theme-toggle {
+    color: var(--text-color);
+}
+
+.theme-toggle button {
+    color: inherit;
+    padding: 0;
+    font-size: 1rem;
+    background: transparent;
+    border: none;
+    opacity: 0.7;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.theme-toggle button:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    background-color: rgba(var(--text-color-rgb), 0.1);
+}
+
+/* Main layout padding */
+.app main {
+    padding-top: 32px; /* Match header height */
+    transition: padding-right 0.3s ease-out;
+}
+
+/* Layout container styles */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Add search styles */
+.search-container {
+    position: relative;
+    margin-right: 8px;
+}
+
+.search-input {
+    padding: 4px 28px 4px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    background: var(--card-background);
+    color: var(--text-color);
+    width: 200px;
+    height: 32px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 2px rgba(var(--link-color-rgb), 0.1);
+}
+
+.clear-search {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 2px;
+    color: var(--text-color);
+    opacity: 0.5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.clear-search:hover {
+    opacity: 1;
+}
+
+
+

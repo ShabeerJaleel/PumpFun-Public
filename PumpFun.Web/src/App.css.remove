@@ -1,0 +1,3109 @@
+/* Custom class for small thumbnail images */
+.small-thumbnail {
+    width: 50px; /* Adjust as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+/* Optional: Style for clickable links */
+.clickable {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.clickable:hover {
+    text-decoration: underline;
+}
+
+/* Custom tooltip styles */
+.tooltip {
+    font-size: 0.875rem;
+    max-width: 400px;  /* Increased from 300px to 400px */
+    width: 400px;  /* Added fixed width */
+}
+
+.tooltip-inner {
+    background-color: #2c3e50;
+    padding: 10px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    max-width: 300px;  /* Added max-width here too */
+    width: 100%;      /* Added width 100% */
+    white-space: pre-line;  /* Preserve line breaks */
+}
+
+/* Image tooltip styles */
+.tooltip.show {
+    opacity: 1;
+}
+
+#image-tooltip {
+    opacity: 1 !important;
+}
+
+#image-tooltip .tooltip-inner {
+    max-width: 200px; /* Reduced size */
+    width: 200px;
+    height: 200px;
+    padding: 0;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.preview-image-container {
+    width: 200px; /* Reduced size */
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.analysis-text {
+    font-family: monospace;
+    margin: 0;
+    white-space: pre-line;
+    color: var(--text-color); /* Added to adapt text color based on theme */
+}
+
+/* Update PumpFun icon styles */
+.pumpfun-icon {
+    display: inline-block;
+    width: 14px; /* Reduced from 16px to match other icons */
+    height: 14px;
+    background: var(--link-color);
+    border-radius: 50%;
+    position: relative;
+    vertical-align: middle;
+}
+
+.pumpfun-icon::after {
+    content: "P";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 10px; /* Reduced from 12px */
+    font-weight: bold;
+}
+
+.pumpfun-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.pumpfun-icon-link:hover {
+    opacity: 1;
+}
+
+/* Update analysis-panel styles to use CSS variables */
+.analysis-panel {
+    position: fixed;
+    top: 32px; /* Match header height */
+    right: 0;
+    height: calc(100vh - 32px);
+    width: 300px;
+    background: var(--card-background);
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.analysis-panel.visible {
+    transform: translateX(0);
+}
+
+.analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.analysis-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.analysis-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.analysis-text {
+    font-family: monospace;
+    margin: 0;
+    white-space: pre-line;
+    color: var(--text-color);
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+.analysis-text p {
+    margin-bottom: 1rem;
+}
+
+.analysis-text ul, 
+.analysis-text ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.analysis-text li {
+    margin-bottom: 0.5rem;
+}
+
+.analysis-text strong {
+    font-weight: 600;
+}
+
+.analysis-text em {
+    font-style: italic;
+}
+
+.analysis-text a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.analysis-text a:hover {
+    text-decoration: underline;
+}
+
+.analysis-text table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+.analysis-text th,
+.analysis-text td {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.analysis-text th {
+    background-color: rgba(var(--text-color-rgb), 0.05);
+    font-weight: 600;
+}
+
+.analysis-text h1,
+.analysis-text h2,
+.analysis-text h3,
+.analysis-text h4,
+.analysis-text h5,
+.analysis-text h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.selected-row {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+}
+
+tr:hover {
+    background-color: rgba(0,0,0,0.02);
+}
+
+/* Override bootstrap container-fluid padding */
+.container-fluid {
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+/* Add analysis marker styles */
+.analysis-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #198754;  /* Bootstrap success color */
+    border-radius: 50%;
+    margin: 4px;
+}
+
+/* Add position-relative to td elements */
+td {
+    position: relative;
+}
+
+/* Token Cards Grid */
+.tokens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Increased from 180px */
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+/* Token Card Styles */
+.token-card {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0); /* Added gradient */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Increased shadow */
+    border-radius: 10px; /* Slightly increased */
+    padding: 0.375rem; /* Reduced from 0.5rem */
+    position: relative; /* Add this */
+    overflow: hidden; /* Add this to ensure triangle doesn't overflow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Added transition */
+    display: flex;
+    flex-direction: column;
+    min-height: 160px; /* Increased from 140px */
+    height: auto; /* Change from fixed height to auto */
+    border-left: 3px solid transparent; /* Add this line */
+    border-left: none; /* Remove left border */
+    padding-top: 0.5rem; /* Increase top padding for the accent */
+}
+
+/* Remove existing analysis marker styles */
+/* 
+.card-analysis-marker {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 0;
+    border-color: transparent #198754 transparent transparent;
+    z-index: 1;
+}
+*/
+
+/* Add styles for the bulb icon */
+/* Replace the analysis-bulb styles with analysis-icon */
+/* .analysis-icon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: #198754;
+    font-size: 0.875rem;
+    z-index: 1;
+} */
+
+/* Add styles for analyzed cards */
+.token-card.analyzed {
+    border-left: none;
+    border-top: none;
+    position: relative;
+}
+
+.token-card.analyzed.selected {
+    border: 2px solid var(--link-color);
+}
+
+.token-card.analyzed.pinned {
+    border: none;
+}
+
+.token-card.analyzed.selected.pinned {
+    border: 2px solid var(--link-color);
+}
+
+.token-card.analyzed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px;
+    border-color: #198754 transparent transparent #198754; /* Creates triangle */
+    border-radius: 4px 0 0 0; /* Optional: rounds the outer corner */
+}
+
+/* Add a subtle shadow to make it look more like a folded corner */
+.token-card.analyzed::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.1) 51%);
+}
+
+/* Optional inner shadow for depth */
+.token-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.05), transparent);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.token-card:hover {
+    transform: translateY(-4px); /* Increased from -1px */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Increased shadow */
+    cursor: pointer;
+}
+
+.token-card.selected {
+    border: 1px solid #0d6efd; /* Reduced from 2px */
+}
+
+/* Highlight selected card */
+.token-card.selected {
+    border: 2px solid var(--link-color);
+    box-shadow: 0 0 10px rgba(var(--link-color-rgb), 0.5);
+    transform: scale(1.02);
+    transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+}
+
+/* Ensure pinned and selected styles coexist */
+.token-card.selected.pinned {
+    border: 2px solid var(--link-color);
+    box-shadow: 0 0 10px rgba(var(--link-color-rgb), 0.5);
+}
+
+.token-card-header {
+    display: flex;
+    align-items: flex-start; /* Changed from center to better align with multiple lines */
+    gap: 0.375rem; /* Reduced from 0.5rem */
+    margin-bottom: 0.375rem; /* Reduced from 1rem */
+}
+
+/* Keep image size the same */
+.token-image {
+    width: 40px; /* Reduced from 48px */
+    height: 40px;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.token-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.token-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+    border-radius: 50%;
+}
+
+.token-info {
+    flex-grow: 1;
+}
+
+.token-name {
+    font-size: 0.75rem; /* Was 0.825rem */
+    color: #666; /* Was blue */
+    font-weight: normal; /* Was 600 */
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.token-name:hover {
+    text-decoration: underline;
+}
+
+.token-name .social-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-left: 4px;
+}
+
+.token-symbol {
+    font-size: 0.825rem; /* Was 0.75rem */
+    font-weight: 600; /* Was normal */
+    margin: 0;
+    line-height: 1.1;
+    max-width: 100%;
+    cursor: pointer;
+    color: #0d6efd;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.token-symbol:hover {
+    text-decoration: underline;
+}
+
+.token-symbol .social-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-left: 4px;
+}
+
+.token-age {
+    font-size: 0.675rem; /* Reduced from 0.7rem */
+    color: #666;
+}
+
+.token-card-body {
+    margin-bottom: 0.25rem; /* Reduced from 0.5rem */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0.375rem 0;
+    padding-right: 40px; /* Add space for dev info */
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.token-description {
+    font-size: 0.75rem; /* Reduced from 0.8rem */
+    margin-bottom: 0.375rem; /* Reduced from 1rem */
+    cursor: pointer;
+    flex: 1;
+    overflow: hidden;
+    font-size: 0.75rem;
+    margin: 0; /* Remove margin */
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Show 3 lines */
+    text-overflow: ellipsis;
+    margin: 0;
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 0.8;
+    transition: opacity 0.3s ease-out;
+}
+
+.token-metrics {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.25rem; /* Reduced from 0.5rem */
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-label {
+    font-size: 0.7rem; /* Reduced from 0.8rem */
+}
+
+.metric-value {
+    font-size: 0.8rem;
+    transition: opacity 0.3s ease-out;
+}
+
+.token-card-footer {
+    display: flex;
+    gap: 2px; /* Reduced from 4px */
+    padding-top: 0.375rem;
+    border-top: 1px solid #eee;
+    font-size: 0.825rem;
+    margin-top: auto; /* Push footer to bottom */
+    min-height: 32px; /* Set minimum height for social section */
+    align-items: center;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    padding-right: 4px; /* Add some right padding */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+
+/* Toast styles */
+.toast {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    z-index: 1050;
+}
+
+/* Define CSS variables for light theme */
+:root[data-theme='light'] {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --card-background: #ffffff;
+    --card-text: #000000;
+    --header-background: #f8f9fa;
+    --header-text: #000000;
+    --link-color: #0d6efd;
+    --text-color-rgb: 0, 0, 0;
+    /* Add other variables as needed */
+}
+
+/* Define CSS variables for dark theme */
+:root[data-theme='dark'] {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --card-background: #1e1e1e;
+    --card-text: #ffffff;
+    --header-background: #1f1f1f;
+    --header-text: #ffffff;
+    --link-color: #0d6efd;
+    --text-color-rgb: 255, 255, 255;
+    /* Add other variables as needed */
+}
+
+/* Apply variables to body and other elements */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Update token-card styles to use variables */
+.token-card {
+    background: var(--card-background);
+    color: var(--card-text);
+    /* ...existing styles... */
+}
+
+/* Update button styles */
+.btn-outline-secondary {
+    border-color: var(--link-color);
+    color: var(--link-color);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--link-color);
+    color: var(--background-color);
+}
+
+/* Update tooltip styles */
+.tooltip {
+    background-color: var(--card-background);
+    color: var(--card-text);
+    /* Adjust other tooltip styles if necessary */
+}
+
+.tooltip-inner {
+    background-color: var(--card-background);
+    color: var(--card-text);
+}
+
+/* Update modal styles */
+.modal-content {
+    background-color: var(--card-background);
+    color: var(--card-text);
+}
+
+/* Update other elements to use variables */
+/* Example for links */
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: darken(var(--link-color), 10%);
+}
+
+/* Ensure other components utilize CSS variables */
+/* ...additional styles... */
+
+/* Multi-pane layout styles */
+.multi-pane-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+    height: calc(100vh - 32px); /* Adjust based on new header height */
+    transition: grid-template-columns 0.3s ease-out;
+}
+
+.pane {
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.3s ease-out;
+}
+
+.pane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+    height: 40px;
+}
+
+.pane-content {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+}
+
+/* Filter panel styles */
+.filter-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background: var(--card-background);
+    border-left: 1px solid var(--border-color);
+    box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+    animation: slideIn 0.3s ease-out;
+    z-index: 10;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filter-content {
+    padding: 1rem 0;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark theme scrollbar */
+:root[data-theme='dark'] ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+:root[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Updated header styles */
+.app-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 0.25rem;
+    z-index: 1000;
+    height: 32px; /* Reduced from 40px */
+}
+
+/* Replace theme-toggle with controls-container */
+.controls-container {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    z-index: 1001;
+    display: flex;
+    gap: 8px;
+}
+
+.controls-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    color: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.controls-container button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Light theme specific */
+:root[data-theme='light'] .controls-container button {
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme='light'] .controls-container button:not(:disabled):hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme specific */
+:root[data-theme='dark'] .controls-container button {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme='dark'] .controls-container button:not(:disabled):hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Remove old theme-toggle styles */
+/* ...rest of existing styles... */
+
+.theme-toggle {
+    color: var(--text-color);
+}
+
+.theme-toggle button {
+    color: inherit;
+    padding: 0.25rem;
+    font-size: 1rem;
+    background: transparent;
+    border: none;
+    opacity: 0.7;
+}
+
+.theme-toggle button:hover {
+    opacity: 1;
+}
+
+.filter-summary {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.btn-icon {
+    padding: 0.25rem;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--text-color);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-icon:hover {
+    color: var(--link-color);
+}
+
+/* Update main layout */
+.app main {
+    padding-top: 32px; /* Match new header height */
+    padding-right: 300px; /* Width of chat window */
+    transition: padding-right 0.3s ease-out;
+}
+
+.app main.chat-collapsed {
+    padding-right: 30px;
+}
+
+/* Filter panel button styles */
+.filter-panel .input-group .btn-outline-secondary {
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+    border-color: #ced4da;
+}
+
+.filter-panel .input-group .btn-outline-secondary:hover {
+    background-color: #e9ecef;
+    color: #dc3545;
+}
+
+.filter-panel .input-group svg {
+    font-size: 1.25rem;
+    vertical-align: middle;
+}
+
+/* Collapsed pane styles */
+.pane.collapsed {
+    display: none;
+}
+
+.collapsed-pane-button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.collapsed-pane-button:hover {
+    background-color: rgba(var(--text-color-rgb), 0.1);
+}
+
+.pane-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Layout container */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Pane menu styles */
+.pane-menu {
+    width: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.pane-menu-item {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-background);
+    border: none;
+    border-radius: 8px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pane-menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.menu-number {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.pane-menu-item.collapsed {
+    opacity: 0.7;
+}
+
+.pane-menu-item:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Remove the old pane-number styles from the menu */
+.pane-menu-item span {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Update the pane-number styles in the pane header */
+.pane-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.pane-title {
+    display: flex;
+    align-items: center;
+}
+
+/* Panes container styles */
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Chat pane specific styles - fixed 30% width */
+.pane.chat-pane {
+    flex: 0 0 35%; /* Don't grow, don't shrink, stay at 30% */
+    max-width: 35%; /* Maximum width cap */
+    min-width: 400px; /* Minimum width to ensure readability */
+}
+
+/* Non-chat panes in different configurations */
+.pane:not(.chat-pane) {
+    flex: 1 1 0; /* Allow growing and shrinking with 0 base width */
+    min-width: 0; /* Allow shrinking below content size */
+}
+
+/* Remove any old width calculations */
+.panes-container.with-chat .pane,
+.panes-container:not(.with-chat) .pane,
+.panes-container.single-pane .pane,
+.panes-container.two-panes .pane {
+    width: auto; /* Remove fixed width calculations */
+}
+
+/* Remove any fixed positioning and overlay styles */
+.chat-pane {
+    position: relative;
+    right: auto;
+    top: auto;
+}
+
+/* Clean up other pane styles */
+.pane {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-height: 0; /* Allow vertical shrinking */
+}
+
+/* Chat pane styles */
+.chat-pane {
+    flex: none; /* Don't grow or shrink */
+    width: 400px; /* Fixed width */
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease-out;
+}
+
+/* Remove the old chat window styles */
+.chat-window,
+.chat-window-container {
+    display: none;
+}
+
+/* Remove the padding-right from main since we're using grid now */
+.app main {
+    padding-top: 32px;
+    padding-right: 0;
+    transition: none;
+}
+
+.app main.chat-collapsed {
+    padding-right: 0;
+}
+
+/* Layout container styles */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Panes container styles - UPDATED */
+.panes-container {
+    display: flex; /* Change from grid to flex */
+    gap: 1rem;
+    padding-right: 1rem;
+    transition: all 0.3s ease-out;
+    flex: 1;
+}
+
+/* Default state: chat docked */
+.panes-container {
+    width: calc(100% - 300px); /* Reserve space for chat */
+}
+
+/* When chat is not docked */
+.panes-container:not(.with-chat) {
+    width: 100%;
+}
+
+/* Individual pane styles */
+.pane {
+    flex: 1; /* Make panes take equal space */
+    min-width: 0; /* Allow panes to shrink */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chat pane styles */
+.chat-pane {
+    position: fixed;
+    right: 0;
+    top: 32px;
+    width: 400px;
+    height: calc(100vh - 32px);
+    background: var(--card-background);
+    border-radius: 8px 0 0 0;
+    box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 998;
+}
+
+.chat-pane.collapsed {
+    display: none;
+}
+
+/* Remove any conflicting styles */
+.panes-container.with-chat {
+    display: flex;
+}
+
+/* Remove padding-right from main since we're using fixed positioning for chat */
+.app main {
+    padding-right: 0;
+}
+
+/* Layout container styles */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Panes container styles */
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Individual pane styles */
+.pane {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Pane states based on visible count */
+.panes-container.with-chat .pane {
+    flex: 1;
+    max-width: calc(25% - 0.75rem); /* 4 panes with gap consideration */
+}
+
+.panes-container:not(.with-chat) .pane {
+    flex: 1;
+    max-width: calc(33.333% - 0.667rem); /* 3 panes with gap consideration */
+}
+
+.panes-container.two-panes .pane {
+    flex: 1;
+    max-width: calc(50% - 0.5rem);
+}
+
+.panes-container.single-pane .pane {
+    flex: 1;
+    max-width: 100%;
+}
+
+/* Chat pane specific styles */
+.chat-pane {
+    background: var(--card-background);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Remove old chat overlay styles */
+.chat-window-container,
+.chat-window {
+    display: none;
+}
+
+/* Chat messages container */
+.chat-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* Message styling */
+.message {
+    margin-bottom: 8px;
+    padding: 8px;
+    background: rgba(var(--text-color-rgb), 0.05);
+    border-radius: 4px;
+}
+
+/* Clean up any old styles */
+.app main {
+    padding-right: 0;
+}
+
+.panes-container.with-chat {
+    width: 100%;
+}
+
+/* Layout container styles */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Panes container styles */
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Individual pane styles */
+.pane {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Remove fixed positioning and adjust pane widths */
+.pane:not(.collapsed) {
+    flex: 1;
+    min-width: 0;
+}
+
+.panes-container.with-chat .pane {
+    width: calc(25% - 0.75rem); /* 4 equal panes with gap */
+}
+
+.panes-container:not(.with-chat) .pane {
+    width: calc(33.333% - 0.667rem); /* 3 equal panes with gap */
+}
+
+/* Remove old chat styles */
+.chat-window-container,
+.chat-window {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.chat-pane {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+}
+
+/* Remove any fixed positioning */
+.chat-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* Clean up any overlay-related styles */
+.app main {
+    padding-right: 0;
+}
+
+/* Update panes container styles */
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Individual pane styles - default behavior */
+.pane {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Specific chat pane styles - limit max width */
+.pane.chat-pane {
+    flex: 0 0 35%; /* Don't grow, don't shrink, stay at 30% */
+    max-width: 35%; /* Maximum width cap */
+    min-width: 400px; /* Minimum width to ensure readability */
+}
+
+/* Non-chat panes in different configurations */
+.panes-container.with-chat .pane:not(.chat-pane) {
+    flex: 1; /* Allow other panes to grow and share remaining space */
+}
+
+/* When chat is not visible */
+.panes-container:not(.with-chat) .pane:not(.chat-pane) {
+    flex: 1;
+}
+
+/* Remove old fixed positioning styles */
+.chat-pane {
+    position: relative;
+    right: auto;
+    top: auto;
+    height: auto;
+}
+
+/* Clean up any remaining overlay styles */
+.chat-window,
+.chat-window-container {
+    display: none;
+}
+
+/* Layout container and panes container base styles */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Pane base styles */
+.pane {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-width: 0; /* Allow content to shrink */
+}
+
+/* Non-chat panes - grow and share space */
+.pane:not(.chat-pane) {
+    flex: 1;
+    min-width: 300px; /* Minimum width for readability */
+}
+
+/* Chat pane - fixed width */
+.pane.chat-pane {
+    flex: 0 0 400px; /* Fixed width, don't grow or shrink */
+    width: 400px;
+}
+
+/* Remove all position: fixed and width calculation styles */
+.panes-container.with-chat,
+.panes-container:not(.with-chat) {
+    width: auto;
+}
+
+/* Clean up any old styles */
+.chat-window,
+.chat-window-container {
+    display: none;
+}
+
+/* Place at the end of the file after all other styles */
+
+/* IMPORTANT: Chat pane styles - high specificity and important declarations */
+.panes-container .pane.chat-pane {
+    flex: 0 0 35% !important;
+    width: 35% !important;
+    min-width: 400px !important;
+}
+
+/* Other panes will grow to fill remaining space */
+.panes-container .pane:not(.chat-pane) {
+    flex: 1 1 0% !important;
+    min-width: 200px !important;
+}
+
+/* Clean up any old width calculations or conflicting styles */
+.panes-container.with-chat .pane,
+.panes-container:not(.with-chat) .pane,
+.panes-container.single-pane .pane,
+.panes-container.two-panes .pane {
+    max-width: none;
+    width: auto;
+}
+
+/* Remove any fixed positioning */
+.chat-pane {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+}
+
+/* Reset container width to auto */
+.panes-container,
+.panes-container.with-chat {
+    width: auto !important;
+}
+
+/* Base pane styles */
+.panes-container .pane {
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Content panes (non-chat) */
+.panes-container .pane:not(.chat-pane):not(.collapsed) {
+    flex: 1 1 0%;
+    min-width: 200px;
+}
+
+/* Chat pane */
+.panes-container .pane.chat-pane:not(.collapsed) {
+    flex: 0 0 300px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+/* Single pane layout */
+.panes-container.single-pane .pane:not(.chat-pane):not(.collapsed) {
+    flex: 1 1 100%;
+    max-width: 100%;
+}
+
+/* Hide collapsed panes */
+.panes-container .pane.collapsed {
+    display: none;
+}
+
+/* Layout container */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Panes container */
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* ChatScope customization */
+.cs-message-input {
+    background-color: var(--card-background) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+.cs-message-list {
+    background: var(--card-background) !important;
+}
+
+.cs-message__content {
+    background-color: rgba(var(--text-color-rgb), 0.05) !important;
+    color: var(--text-color) !important;
+}
+
+.cs-conversation-header {
+    background: var(--card-background) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.cs-conversation-header__content {
+    color: var(--text-color) !important;
+}
+
+.cs-message-input__content-editor {
+    background: var(--card-background) !important;
+    color: var(--text-color) !important;
+}
+
+.cs-message-input__content-editor[contenteditable=false] {
+    background: rgba(var(--text-color-rgb), 0.05) !important;
+}
+
+/* Add to existing CSS */
+
+/* Flash animation for new tokens */
+@keyframes flashNew {
+    0% { 
+        background-color: rgba(var(--link-color-rgb), 0.3);
+        transform: translateY(-4px);
+    }
+    100% { 
+        background-color: var(--card-background);
+        transform: translateY(0);
+    }
+}
+
+.flash-new {
+    animation: flashNew 3s ease-out;
+}
+
+/* Enhanced selected card styling */
+.token-card.selected {
+    border: 2px solid var(--link-color);
+    box-shadow: 0 0 0 2px rgba(var(--link-color-rgb), 0.2);
+    transform: translateY(-2px);
+}
+
+.token-card.selected::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(145deg, 
+        rgba(var(--link-color-rgb), 0.1),
+        transparent
+    );
+    pointer-events: none;
+}
+
+/* Pin button styles */
+.token-card-footer .btn-link {
+    color: var(--text-color);
+    opacity: 0.5;
+    transition: opacity 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.token-card-footer .btn-link:hover {
+    opacity: 1;
+    color: var(--link-color);
+}
+
+/* Add margin between create and pin buttons */
+.token-card-footer .btn-link + .btn-link {
+    margin-left: 0.5rem;
+}
+
+/* Style for create token button */
+.token-card-footer .btn-link {
+    color: var(--text-color);
+    opacity: 0.5;
+    transition: opacity 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Add margin between create and pin buttons */
+.token-card-footer .btn-link + .btn-link {
+    margin-left: 0.5rem;
+}
+
+/* Style for pinned cards */
+.token-card[data-pinned="true"] {
+    border-left: 2px solid var(--link-color);
+}
+
+/* Update card selection and pin styles */
+
+.token-card.pinned {
+    border-left: 3px solid var(--link-color);
+    background: linear-gradient(
+        to right,
+        rgba(var(--link-color-rgb), 0.05),
+        var(--card-background)
+    );
+    border-left: none;
+    background: var(--card-background);
+}
+
+.token-card.selected.pinned {
+    border: 2px solid var(--link-color);
+    border-left: 3px solid var(--link-color);
+    background: linear-gradient(
+        to right,
+        rgba(var(--link-color-rgb), 0.1),
+        rgba(var(--link-color-rgb), 0.05)
+    );
+    border-left: none;
+}
+
+.token-card.pinned .btn-link {
+    color: var(--link-color);
+    opacity: 1;
+}
+
+/* Add clear pins button styles */
+.btn-icon {
+    padding: 0.25rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.btn-icon:hover {
+    opacity: 1;
+    color: var(--link-color);
+}
+
+/* Remove the first definition of flashNew animation and keep only this one */
+@keyframes flashNew {
+    0% { 
+        background-color: rgba(13, 110, 253, 0.4);
+        transform: translateY(-8px);
+        box-shadow: 0 8px 16px rgba(13, 110, 253, 0.2);
+    }
+    25% {
+        background-color: rgba(13, 110, 253, 0.3);
+        transform: translateY(-4px);
+        box-shadow: 0 4px 8px rgba(13, 110, 253, 0.15);
+    }
+    75% {
+        background-color: rgba(13, 110, 253, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(13, 110, 253, 0.1);
+    }
+    100% { 
+        background-color: var(--card-background);
+        transform: translateY(0);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.flash-new {
+    animation: flashNew 5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: both;
+}
+
+/* Update flash animation for new tokens */
+@keyframes flashNew {
+    0% { 
+        background-color: rgba(13, 110, 253, 0.3);
+        transform: translateY(-4px);
+    }
+    25% {
+        background-color: rgba(13, 110, 253, 0.2);
+        transform: translateY(-2px);
+    }
+    75% {
+        background-color: rgba(13, 110, 253, 0.1);
+        transform: translateY(-1px);
+    }
+    100% { 
+        background-color: var(--card-background);
+        transform: translateY(0);
+    }
+}
+
+.flash-new {
+    animation: flashNew 5s ease-out;
+}
+
+/* Styles for the collapse button in pane headers */
+.collapse-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem;
+    transition: color 0.2s;
+}
+
+.collapse-button:hover {
+    color: var(--link-color);
+}
+
+/* Adjust pane-header to accommodate the new controls */
+.pane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+    height: 40px;
+}
+
+/* Styles for the collapse button in pane headers */
+.collapse-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem;
+    transition: color 0.2s;
+}
+
+.collapse-button:hover {
+    color: var(--link-color);
+}
+
+/* Adjust pane-header to accommodate the new controls */
+.pane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+    height: 40px;
+}
+
+/* Create Token Modal Styles */
+.create-token-modal .modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.create-token-modal .modal-header {
+    padding: 1rem 1rem 0.5rem;
+}
+
+.create-token-modal .modal-body {
+    padding: 0.5rem 1rem;
+}
+
+.create-token-modal .modal-footer {
+    padding: 1rem;
+}
+
+.create-token-modal .form-control {
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.1);
+    transition: all 0.2s;
+}
+
+.create-token-modal .form-control:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 2px rgba(var(--link-color-rgb), 0.1);
+}
+
+.image-upload-container {
+    width: 120px;
+    flex-shrink: 0;
+}
+
+.image-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    border: 2px dashed rgba(0,0,0,0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-preview:hover {
+    border-color: var(--link-color);
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+    color: rgba(0,0,0,0.3);
+}
+
+.image-placeholder i {
+    font-size: 2rem;
+}
+
+.social-links-container .input-group-text {
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-right: none;
+    padding: 0.25rem 0.5rem;
+}
+
+.social-links-container .input-group-text i {
+    opacity: 0.5;
+}
+
+/* Dark theme adjustments */
+:root[data-theme='dark'] .create-token-modal .modal-content {
+    background: var(--card-background);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+:root[data-theme='dark'] .image-preview {
+    border-color: rgba(255,255,255,0.1);
+}
+
+:root[data-theme='dark'] .image-placeholder {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.3);
+}
+
+/* Updated Create Token Modal Styles */
+.create-token-modal .modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.token-form-main {
+    width: calc(100% - 140px); /* Account for image section width */
+}
+
+.image-section {
+    width: 120px;
+}
+
+.image-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    border: 2px dashed rgba(var(--text-color-rgb), 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--text-color-rgb), 0.02);
+}
+
+.image-preview:hover {
+    border-color: var(--link-color);
+    background: rgba(var(--text-color-rgb), 0.05);
+}
+
+.image-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.image-actions .btn {
+    padding: 0.25rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+/* Dark theme adjustments */
+:root[data-theme='dark'] .image-preview {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme='dark'] .image-preview:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--link-color);
+}
+
+/* Image URL Popover styles */
+.image-url-popover {
+    min-width: 300px;
+}
+
+.image-url-popover .popover-body {
+    padding: 0.5rem;
+}
+
+.image-url-popover .form-control {
+    border: 1px solid rgba(var(--text-color-rgb), 0.1);
+}
+
+/* Dark theme adjustments */
+:root[data-theme='dark'] .image-url-popover {
+    background: var(--card-background);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme='dark'] .image-url-popover .popover-body {
+    color: var(--text-color);
+}
+
+:root[data-theme='dark'] .image-url-popover .form-control {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+/* Add these styles */
+.text-warning {
+    color: #ffc107;
+    display: flex;
+    align-items: center;
+}
+
+.text-warning i {
+    font-size: 1rem;
+}
+
+/* Update create token modal styles */
+.create-token-modal .form-control[type="number"] {
+    width: 120px;
+}
+
+/* Update description textarea height */
+.create-token-modal textarea[name="description"] {
+    min-height: 120px; /* Increased from default */
+    resize: vertical;
+}
+
+/* Add styles for buy amount container */
+.buy-amount-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.buy-amount-container .form-control {
+    width: 80px !important;
+}
+
+.buy-amount-label {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    white-space: nowrap;
+}
+
+/* Update token form main to use all available space */
+.token-form-main {
+    width: calc(100% - 140px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Update simulation controls styles */
+.simulation-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.buy-amount-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.buy-amount-container .form-control {
+    width: 80px !important;
+}
+
+.buy-amount-label {
+    font-size: 0.875rem;
+    color: var (--text-color);
+    opacity: 0.8;
+    white-space: nowrap;
+}
+
+/* Update checkbox styles */
+.form-check {
+    margin-bottom: 0;
+}
+
+.form-check-input:checked {
+    background-color: var(--link-color);
+    border-color: var(--link-color);
+}
+
+/* Ensure modal stays above everything and doesn't get affected by background updates */
+.modal {
+    z-index: 1060 !important; /* Increase z-index to ensure it's above other elements */
+}
+
+.modal-backdrop {
+    z-index: 1050 !important;
+}
+
+/* Prevent modal content from flashing */
+.create-token-modal .modal-content {
+    /* ...existing styles... */
+    position: relative;
+    z-index: 1060;
+    transform: translate3d(0, 0, 0); /* Force GPU acceleration */
+    will-change: transform; /* Optimize for animations */
+    backface-visibility: hidden; /* Prevent flickering */
+}
+
+/* Ensure confirmation dialog stays above the main modal */
+.modal.confirmation-dialog {
+    z-index: 1070 !important;
+}
+
+.modal.confirmation-dialog .modal-backdrop {
+    z-index: 1065 !important;
+}
+
+/* Ensure warning modal stays stable and above everything */
+.modal.confirmation-dialog {
+    z-index: 1080 !important; /* Increased from 1070 to be higher */
+}
+
+.modal.confirmation-dialog .modal-backdrop {
+    z-index: 1075 !important; /* Increased from 1065 */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.modal.confirmation-dialog .modal-content {
+    position: fixed; /* Change from relative to fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translate3d(0, 0, 0); /* Added translate3d */
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000;
+    max-width: 500px;
+    margin: 0;
+    width: 90%;
+}
+
+/* Ensure warning dialog doesn't get affected by background refreshes */
+.confirmation-dialog-container {
+    isolation: isolate;
+    position: relative;
+    z-index: 1080;
+}
+
+/* Ensure confirmation dialog stays above the main modal */
+.modal.confirmation-dialog {
+    z-index: 1070 !important;
+}
+
+.modal.confirmation-dialog .modal-backdrop {
+    z-index: 1065 !important;
+}
+
+/* Add these styles for the warning modal */
+.confirmation-dialog {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.confirmation-dialog .modal-dialog {
+    margin: 0 !important;
+}
+
+.confirmation-dialog .modal-content {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Ensure confirmation dialog stays above the main modal */
+.modal.confirmation-dialog {
+    z-index: 1070 !important;
+}
+
+.modal.confirmation-dialog .modal-backdrop {
+    z-index: 1065 !important;
+}
+
+/* Modal stacking order */
+.modal {
+    z-index: 1060 !important;
+}
+
+.modal-backdrop {
+    z-index: 1050 !important;
+}
+
+/* Confirmation dialog specific styles */
+.confirmation-dialog {
+    z-index: 1070 !important;
+}
+
+.confirmation-dialog .modal-dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+    margin: 0;
+    width: auto;
+    max-width: 500px;
+    min-width: 320px;
+}
+
+.confirmation-dialog .modal-content {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.confirmation-dialog .modal-backdrop {
+    z-index: 1065 !important;
+}
+
+/* Remove any existing styles that might conflict */
+.modal.confirmation-dialog {
+    position: fixed;
+    overflow: hidden;
+}
+
+/* Confirmation dialog styles */
+.confirmation-dialog {
+    z-index: 1070 !important;
+}
+
+.confirmation-dialog .modal-dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+    margin: 0;
+    width: auto;
+    max-width: 500px;
+    min-width: 320px;
+}
+
+.confirmation-dialog .modal-content {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Remove extra backdrop - this is key */
+.confirmation-dialog + .modal-backdrop {
+    display: none !important;
+}
+
+/* Remove any conflicting styles */
+.modal.confirmation-dialog {
+    position: fixed;
+    overflow: hidden;
+}
+
+/* Confirmation dialog styles - simplified */
+.confirmation-dialog {
+    z-index: 1070 !important;
+}
+
+.confirmation-dialog .modal-dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+    margin: 0;
+    width: auto;
+    max-width: 500px;
+    min-width: 320px;
+}
+
+.confirmation-dialog .modal-content {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Remove all backdrop-related styles for confirmation dialog */
+.confirmation-dialog + .modal-backdrop,
+.modal.confirmation-dialog .modal-backdrop,
+.confirmation-dialog .modal-backdrop {
+    display: none !important;
+}
+
+/* Remove any conflicting styles */
+.modal.confirmation-dialog {
+    position: fixed;
+    overflow: hidden;
+    backdrop-filter: none !important;
+    background: none !important;
+}
+
+/* Social icon and badge styles */
+.social-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--link-color);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    margin-right: 2px; /* Reduced from 4px */
+    font-size: 0.875rem;
+    width: 18px; /* Reduced from 20px */
+    height: 18px; /* Reduced from 20px */
+}
+
+/* Make all icons consistent size */
+.social-link i,
+.social-link svg {
+    font-size: 0.875rem;
+    width: 14px;
+    height: 14px;
+}
+
+/* Update badge positioning */
+.social-badge {
+    position: absolute;
+    top: -9px; /* Single definition for badge position */
+    right: -6px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 8px;
+    padding: 1px 3px;
+    font-size: 0.6rem;
+    min-width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 1px solid #fff;
+    z-index: 1;
+}
+
+/* Update token card footer */
+.token-card-footer {
+    display: flex;
+    gap: 2px; /* Reduced from 4px */
+    padding-top: 0.375rem;
+    border-top: 1px solid #eee;
+    font-size: 0.825rem;
+    margin-top: auto;
+    min-height: 32px;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    padding-right: 4px;
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+
+/* Social icon badge styles */
+.social-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--link-color); /* Changed from var(--text-color) to var(--link-color) */
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    margin-right: 4px; /* Reduced from 8px */
+    font-size: 0.875rem; /* Slightly reduced from 1rem */
+    width: 20px; /* Add fixed width */
+    height: 20px; /* Add fixed height */
+}
+
+.social-link:hover {
+    opacity: 1;
+    color: var(--link-color); /* Keep color consistent on hover */
+}
+
+/* Only dev warning indicators should be red */
+
+/* Keep badge styles as they are */
+.social-badge {
+    position: absolute;
+    top: -9px; /* Single definition for badge position */
+    right: -6px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 8px;
+    padding: 1px 3px;
+    font-size: 0.6rem;
+    min-width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 1px solid #fff;
+    z-index: 1; /* Ensure badge stays above icon */
+}
+
+/* Optional: Make the icons themselves slightly smaller */
+.social-link i,
+.social-link svg {
+    font-size: 0.875rem; /* Reduced from 1rem if needed */
+    width: 14px;
+    height: 14px;
+}
+
+/* Keep the existing social badge styles */
+.social-badge {
+    position: absolute;
+    top: -9px; /* Single definition for badge position */
+    right: -6px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 8px;
+    padding: 1px 3px;
+    font-size: 0.6rem;
+    min-width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 1px solid #fff;
+}
+
+/* Add style for self-buy icon */
+
+/* Update token card footer links spacing */
+.token-card-footer a {
+    position: relative;
+    margin-right: 12px;
+}
+
+/* Context Menu Styles */
+.context-menu {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    min-width: 200px;
+}
+
+.context-menu .popover-body {
+    padding: 0;
+}
+
+.context-menu-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.context-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.context-menu-item:hover {
+    background-color: rgba(var(--link-color-rgb), 0.1);
+    color: var(--link-color);
+}
+
+/* Dark theme adjustments */
+:root[data-theme='dark'] .context-menu {
+    background-color: var(--card-background);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme='dark'] .context-menu-item {
+    color: var(--text-color);
+}
+
+:root[data-theme='dark'] .context-menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Context Menu Styles */
+.context-menu.popover {
+    position: fixed !important;
+    transform: none !important;
+    margin: 0;
+    inset: auto !important;
+}
+
+/* Remove these styles */
+.token-stats,
+.stat-link,
+.dev-info,
+.dev-stats,
+.dev-stat-item {
+    display: none;
+}
+
+/* Add these new styles */
+.dev-info {
+    display: none;
+}
+
+.dev-stats {
+    display: none;
+}
+
+.dev-stat-item {
+    display: none;
+}
+
+/* Move pin button to top right */
+.pin-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.pin-button:hover {
+    opacity: 1;
+}
+
+/* Sort button styles */
+.btn-icon.sort-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.875rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: transparent;
+    transition: background-color 0.2s;
+}
+
+.btn-icon.sort-button:hover {
+    background-color: rgba(var(--text-color-rgb), 0.1);
+}
+
+.sort-indicator {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+/* Add these styles */
+.sort-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--card-background);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 150px;
+    margin-top: 4px;
+}
+
+.sort-menu-item {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    text-align: left;
+    border: none;
+    background: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+}
+
+.sort-menu-item:hover {
+    background-color: rgba(var(--text-color-rgb), 0.1);
+}
+
+.sort-menu-item.active {
+    background-color: rgba(var(--link-color-rgb), 0.1);
+    color: var (--link-color);
+}
+
+/* Update sort button styles */
+.sort-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    white-space: nowrap;
+}
+
+/* Update flash animation for new tokens */
+@keyframes flashNew {
+    0% { 
+        background-color: rgba(13, 110, 253, 0.3);
+        transform: translateY(-4px);
+    }
+    25% {
+        background-color: rgba(13, 110, 253, 0.2);
+        transform: translateY(-2px);
+    }
+    75% {
+        background-color: rgba(13, 110, 253, 0.1);
+        transform: translateY(-1px);
+    }
+    100% { 
+        background-color: var(--card-background);
+        transform: translateY(0);
+    }
+}
+
+.flash-new {
+    animation: flashNew 5s ease-out;
+}
+
+/* Add transition for content changes */
+.token-description, 
+.metric-value {
+    transition: opacity 0.3s ease-out;
+}
+
+/* Chat Window Styles */
+.chat-window {
+    position: fixed;
+    right: 0;
+    top: 32px;
+    width: 300px;
+    height: calc(100vh - 32px);
+    background: var(--card-background);
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-out;
+    z-index: 100;
+}
+
+.chat-window.collapsed {
+    transform: translateX(calc(100% - 30px));
+}
+
+.chat-header {
+    padding: 8px 16px;
+    background: var(--header-background);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.message {
+    margin-bottom: 8px;
+    padding: 8px;
+    background: rgba(var(--text-color-rgb), 0.05);
+    border-radius: 4px;
+}
+
+/* Add these new chat window styles */
+.chat-window-container {
+    position: fixed;
+    right: 0;
+    top: 32px;
+    width: 300px;
+    height: calc(100vh - 32px);
+    background: var(--card-background);
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    z-index: 998; /* Below analysis panel */
+    transition: transform 0.3s ease-out;
+}
+
+.chat-window-container.docked {
+    position: fixed;
+    transform: none;
+}
+
+.chat-window-container:not(.docked) {
+    position: absolute;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.chat-window-container.collapsed {
+    width: 30px;
+}
+
+.chat-window-header {
+    padding: 8px 16px;
+    background: var(--header-background);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move; /* Indicate draggable when undocked */
+    user-select: none;
+}
+
+.chat-window-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chat-window-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.message {
+    margin-bottom: 8px;
+    padding: 8px;
+    background: rgba(var(--text-color-rgb), 0.05);
+    border-radius: 4px;
+}
+
+/* Update existing app layout to accommodate docked chat */
+.app main {
+    padding-right: 300px; /* Width of chat window */
+    transition: padding-right 0.3s ease-out;
+}
+
+.app main.chat-collapsed {
+    padding-right: 30px;
+}
+
+/* Remove old chat styles if they exist */
+.chat-window {
+    display: none;
+}
+
+/* Update panes container for chat panel */
+.panes-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Default 3 columns */
+    gap: 1rem;
+    padding-right: 1rem;
+    transition: grid-template-columns 0.3s ease-out;
+}
+
+.panes-container.with-chat {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns when chat is docked */
+}
+
+/* Chat pane specific styles */
+.chat-pane {
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chat-messages-container {
+    height: 100%;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.message {
+    margin-bottom: 8px;
+    padding: 8px;
+    background: rgba(var(--text-color-rgb), 0.05);
+    border-radius: 4px;
+}
+
+/* Update main layout to handle docked state */
+.app main {
+    transition: padding-right 0.3s ease-out;
+}
+
+/* Update panes container styles */
+.panes-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Keep 3 columns by default */
+    gap: 1rem;
+    padding-right: 1rem;
+    transition: all 0.3s ease-out;
+}
+
+/* When chat is docked, compress the other panes */
+.panes-container.with-chat {
+    grid-template-columns: 0.8fr 0.8fr 0.8fr 1fr; /* Add fourth column for chat */
+}
+
+/* Chat pane styles */
+.chat-pane {
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* Remove the old chat window styles */
+.chat-window,
+.chat-window-container {
+    display: none;
+}
+
+/* Remove the padding-right from main since we're using grid now */
+.app main {
+    padding-top: 32px;
+    padding-right: 0;
+    transition: none;
+}
+
+.app main.chat-collapsed {
+    padding-right: 0;
+}
+
+/* Layout container styles */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Panes container styles - UPDATED */
+.panes-container {
+    display: flex; /* Change from grid to flex */
+    gap: 1rem;
+    padding-right: 1rem;
+    transition: all 0.3s ease-out;
+    flex: 1;
+}
+
+/* Default state: chat docked */
+.panes-container {
+    width: calc(100% - 300px); /* Reserve space for chat */
+}
+
+/* When chat is not docked */
+.panes-container:not(.with-chat) {
+    width: 100%;
+}
+
+/* Individual pane styles */
+.pane {
+    flex: 1; /* Make panes take equal space */
+    min-width: 0; /* Allow panes to shrink */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chat pane styles */
+.chat-pane {
+    position: fixed;
+    right: 0;
+    top: 32px;
+    width: 400px;
+    height: calc(100vh - 32px);
+    background: var(--card-background);
+    border-radius: 8px 0 0 0;
+    box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 998;
+}
+
+.chat-pane.collapsed {
+    display: none;
+}
+
+/* Remove any conflicting styles */
+.panes-container.with-chat {
+    display: flex;
+}
+
+/* Remove padding-right from main since we're using fixed positioning for chat */
+.app main {
+    padding-right: 0;
+}
+
+/* Layout container styles */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Panes container styles */
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Individual pane styles */
+.pane {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Pane states based on visible count */
+.panes-container.with-chat .pane {
+    flex: 1;
+    max-width: calc(25% - 0.75rem); /* 4 panes with gap consideration */
+}
+
+.panes-container:not(.with-chat) .pane {
+    flex: 1;
+    max-width: calc(33.333% - 0.667rem); /* 3 panes with gap consideration */
+}
+
+.panes-container.two-panes .pane {
+    flex: 1;
+    max-width: calc(50% - 0.5rem);
+}
+
+.panes-container.single-pane .pane {
+    flex: 1;
+    max-width: 100%;
+}
+
+/* Chat pane specific styles */
+.chat-pane {
+    background: var(--card-background);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Remove old chat overlay styles */
+.chat-window-container,
+.chat-window {
+    display: none;
+}
+
+/* Chat messages container */
+.chat-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* Message styling */
+.message {
+    margin-bottom: 8px;
+    padding: 8px;
+    background: rgba(var(--text-color-rgb), 0.05);
+    border-radius: 4px;
+}
+
+/* Clean up any old styles */
+.app main {
+    padding-right: 0;
+}
+
+.panes-container.with-chat {
+    width: 100%;
+}
+
+/* Layout container styles */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Panes container styles */
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Individual pane styles */
+.pane {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Remove fixed positioning and adjust pane widths */
+.pane:not(.collapsed) {
+    flex: 1;
+    min-width: 0;
+}
+
+.panes-container.with-chat .pane {
+    width: calc(25% - 0.75rem); /* 4 equal panes with gap */
+}
+
+.panes-container:not(.with-chat) .pane {
+    width: calc(33.333% - 0.667rem); /* 3 equal panes with gap */
+}
+
+/* Remove old chat styles */
+.chat-window-container,
+.chat-window {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.chat-pane {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+}
+
+/* Remove any fixed positioning */
+.chat-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* Clean up any overlay-related styles */
+.app main {
+    padding-right: 0;
+}
+
+/* Update panes container styles */
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Individual pane styles - default behavior */
+.pane {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Specific chat pane styles - limit max width */
+.pane.chat-pane {
+    flex: 0 0 35%; /* Don't grow, don't shrink, stay at 30% */
+    max-width: 35%; /* Maximum width cap */
+    min-width: 400px; /* Minimum width to ensure readability */
+}
+
+/* Non-chat panes in different configurations */
+.panes-container.with-chat .pane:not(.chat-pane) {
+    flex: 1; /* Allow other panes to grow and share remaining space */
+}
+
+/* When chat is not visible */
+.panes-container:not(.with-chat) .pane:not(.chat-pane) {
+    flex: 1;
+}
+
+/* Remove old fixed positioning styles */
+.chat-pane {
+    position: relative;
+    right: auto;
+    top: auto;
+    height: auto;
+}
+
+/* Clean up any remaining overlay styles */
+.chat-window,
+.chat-window-container {
+    display: none;
+}
+
+/* Layout container and panes container base styles */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Pane base styles */
+.pane {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-width: 0; /* Allow content to shrink */
+}
+
+/* Non-chat panes - grow and share space */
+.pane:not(.chat-pane) {
+    flex: 1;
+    min-width: 300px; /* Minimum width for readability */
+}
+
+/* Chat pane - fixed width */
+.pane.chat-pane {
+    flex: 0 0 400px; /* Fixed width, don't grow or shrink */
+    width: 400px;
+}
+
+/* Remove all position: fixed and width calculation styles */
+.panes-container.with-chat,
+.panes-container:not(.with-chat) {
+    width: auto;
+}
+
+/* Clean up any old styles */
+.chat-window,
+.chat-window-container {
+    display: none;
+}
+
+/* Place at the end of the file after all other styles */
+
+/* IMPORTANT: Chat pane styles - high specificity and important declarations */
+.panes-container .pane.chat-pane {
+    flex: 0 0 35% !important;
+    width: 35% !important;
+    min-width: 400px !important;
+}
+
+/* Other panes will grow to fill remaining space */
+.panes-container .pane:not(.chat-pane) {
+    flex: 1 1 0% !important;
+    min-width: 200px !important;
+}
+
+/* Clean up any old width calculations or conflicting styles */
+.panes-container.with-chat .pane,
+.panes-container:not(.with-chat) .pane,
+.panes-container.single-pane .pane,
+.panes-container.two-panes .pane {
+    max-width: none;
+    width: auto;
+}
+
+/* Remove any fixed positioning */
+.chat-pane {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+}
+
+/* Reset container width to auto */
+.panes-container,
+.panes-container.with-chat {
+    width: auto !important;
+}
+
+/* Base pane styles */
+.panes-container .pane {
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Content panes (non-chat) */
+.panes-container .pane:not(.chat-pane):not(.collapsed) {
+    flex: 1 1 0%;
+    min-width: 200px;
+}
+
+/* Chat pane */
+.panes-container .pane.chat-pane:not(.collapsed) {
+    flex: 0 0 300px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+/* Single pane layout */
+.panes-container.single-pane .pane:not(.chat-pane):not(.collapsed) {
+    flex: 1 1 100%;
+    max-width: 100%;
+}
+
+/* Hide collapsed panes */
+.panes-container .pane.collapsed {
+    display: none;
+}
+
+/* Layout container */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Panes container */
+.panes-container {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}

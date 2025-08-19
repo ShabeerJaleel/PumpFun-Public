@@ -1,0 +1,294 @@
+/* Layout container */
+.layoutContainer {
+    display: flex;
+    height: calc(100vh - 32px);
+    padding: 1rem 0 1rem 1rem;
+}
+
+/* Pane menu */
+.paneMenu {
+    width: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.menuItem {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-background);
+    border: none;
+    border-radius: 8px;
+    color: var(--link-color); /* Change to blue color */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
+.menuItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(13, 110, 253, 0.15); /* Blue shadow */
+    opacity: 1;
+}
+
+.menuItem.collapsed {
+    opacity: 0.6;
+}
+
+.menuItemContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.menuNumber {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Panes container */
+.panesContainer {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    flex: 1;
+    transition: all 0.3s ease-out;
+}
+
+/* Individual pane */
+.pane {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pane.collapsed {
+    display: none;
+}
+
+/* Chat pane specific */
+.chatPane {
+    flex: 0 0 300px;
+    min-width: 400px;
+    max-width: 400px;
+}
+
+/* Pane header */
+.paneHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+    height: 40px;
+}
+
+.paneTitle {
+    display: flex;
+    align-items: center;
+}
+
+.paneNumber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.paneControls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Button styles */
+.btnIcon {
+    padding: 0.25rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btnIcon:hover {
+    color: var(--link-color);
+}
+
+/* Sort button and menu */
+.sortButton {
+    composes: btnIcon;
+    padding: 4px 8px;
+    white-space: nowrap;
+}
+
+.sortMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--card-background);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 150px;
+    margin-top: 4px;
+}
+
+.sortMenuItem {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    text-align: left;
+    border: none;
+    background: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+}
+
+.sortMenuItem:hover {
+    background-color: rgba(var(--text-color-rgb), 0.1);
+}
+
+.sortMenuItem.active {
+    background-color: rgba(var(--link-color-rgb), 0.1);
+    color: var(--link-color);
+}
+
+/* Filter panel */
+.filterPanel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background: var(--card-background);
+    border-left: 1px solid var(--border-color);
+    box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+    animation: slideIn 0.3s ease-out;
+    z-index: 10;
+}
+
+.filterHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filterContent {
+    padding: 1rem 0;
+}
+
+.filterSummary {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Pane content */
+.paneContent {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+}
+
+/* Responsive layout adjustments */
+.withChat .pane:not(.chatPane) {
+    flex: 1;
+}
+
+.singlePane .pane:not(.chatPane):not(.collapsed) {
+    flex: 1 1 100%;
+    max-width: 100%;
+}
+
+.twoPane .pane:not(.chatPane):not(.collapsed) {
+    flex: 1 1 50%;
+    max-width: 50%;
+}
+
+/* ...existing styles... */
+
+.searchContainer {
+    position: relative;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.searchInput {
+    padding: 4px 24px 4px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    background: var(--card-background);
+    color: var(--text-color);
+    width: 200px;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 2px rgba(var(--link-color-rgb), 0.1);
+}
+
+.clearSearch {
+    position: absolute;
+    right: 4px;
+    background: none;
+    border: none;
+    padding: 2px;
+    color: var(--text-color);
+    opacity: 0.5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.clearSearch:hover {
+    opacity: 1;
+}
+
+.collapseButton {
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+    color: var(--link-color); /* Change to blue color */
+}
+
+.collapseButton:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}

@@ -1,0 +1,136 @@
+.createTokenModal {
+    /* Remove max-width from here since it's conflicting with modal-dialog */
+    margin: 1.75rem auto;
+    display: flex !important;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+}
+
+.createTokenModal :global(.modal-dialog) {
+    margin: 1.75rem auto;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 3.5rem);
+    max-width: 500px;  /* This should be the only width constraint */
+    width: 100%;
+}
+
+.createTokenModal :global(.modal-content) {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Dark theme adjustments from App.css */
+:global([data-theme='dark']) .createTokenModal :global(.modal-content) {
+    background: var(--card-background);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.tokenFormMain {
+    flex: 1;
+    width: calc(100% - 140px);
+    display: flex;
+    flex-direction: column;
+}
+
+.tokenFormMain textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.tokenFormMain :global(.form-control[type="number"]) {
+    width: 120px;
+}
+
+.imageSection {
+    width: 150px;
+}
+
+.imagePreview {
+    width: 100%;
+    height: 150px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagePreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imagePlaceholder {
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.imageActions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.imageUrlPopover {
+    max-width: 300px;
+}
+
+.socialLinksContainer {
+    margin-top: 1rem;
+}
+
+.simulationControls {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.buyAmountContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.buyAmountLabel {
+    white-space: nowrap;
+    font-size: 0.875rem;
+}
+
+.textWarning {
+    position: absolute;
+    right: -20px;
+    color: #dc3545;
+}
+
+.confirmationDialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1100;
+}
+
+.confirmationDialog :global(.modal-content) {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+.confirmationDialog :global(.modal-header) {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.confirmationDialog :global(.modal-footer) {
+    border-top: none;
+    padding-top: 0;
+}

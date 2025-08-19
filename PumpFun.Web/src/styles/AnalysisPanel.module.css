@@ -1,0 +1,107 @@
+.analysisPanel {
+    position: fixed;
+    top: 32px;
+    right: 0;
+    height: calc(100vh - 32px);
+    width: 300px;
+    background: var(--card-background);
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.analysisPanel.visible {
+    transform: translateX(0);
+}
+
+.analysisHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.analysisHeader h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.analysisContent {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.analysisText {
+    font-family: monospace;
+    margin: 0;
+    white-space: pre-line;
+    color: var(--text-color);
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+.analysisText :global(p) {
+    margin-bottom: 1rem;
+}
+
+.analysisText :global(ul), 
+.analysisText :global(ol) {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.analysisText :global(li) {
+    margin-bottom: 0.5rem;
+}
+
+.analysisText :global(strong) {
+    font-weight: 600;
+}
+
+.analysisText :global(em) {
+    font-style: italic;
+}
+
+.analysisText :global(a) {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.analysisText :global(a:hover) {
+    text-decoration: underline;
+}
+
+.analysisText :global(table) {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+.analysisText :global(th),
+.analysisText :global(td) {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.analysisText :global(th) {
+    background-color: rgba(var(--text-color-rgb), 0.05);
+    font-weight: 600;
+}
+
+.analysisText :global(h1),
+.analysisText :global(h2),
+.analysisText :global(h3),
+.analysisText :global(h4),
+.analysisText :global(h5),
+.analysisText :global(h6) {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}

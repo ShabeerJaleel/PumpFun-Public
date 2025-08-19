@@ -1,0 +1,51 @@
+/* Tokens grid layout */
+.tokensGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+/* Loading and error states */
+.loading {
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.error {
+    margin: 3rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+/* Flash animation for new tokens */
+@keyframes flashNew {
+    0% { 
+        background-color: rgba(13, 110, 253, 0.4);
+        transform: translateY(-8px);
+        box-shadow: 0 8px 16px rgba(13, 110, 253, 0.2);
+    }
+    25% {
+        background-color: rgba(13, 110, 253, 0.3);
+        transform: translateY(-4px);
+        box-shadow: 0 4px 8px rgba(13, 110, 253, 0.15);
+    }
+    75% {
+        background-color: rgba(13, 110, 253, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(13, 110, 253, 0.1);
+    }
+    100% { 
+        background-color: var(--card-background);
+        transform: translateY(0);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.flashNew {
+    animation: flashNew 5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: both;
+}

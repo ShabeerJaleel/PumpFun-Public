@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Daemon",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/PumpFun.Daemon/bin/Debug/net8.0/PumpFun.Daemon.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/PumpFun.Daemon",
+            "console": "externalTerminal",
+            "stopAtEntry": false
+        }
+    ]
+}
